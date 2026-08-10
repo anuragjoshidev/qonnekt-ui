@@ -17,8 +17,9 @@ const meta = {
 } satisfies Meta;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Basic: StoryObj = {
+export const Default: Story = {
   render: function FormDemo() {
     const form = useForm({ defaultValues: { email: "" } });
     return (

@@ -8,8 +8,9 @@ const meta = {
 } satisfies Meta;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default: StoryObj = {
+export const Default: Story = {
   render: () => (
     <>
       <Toaster />

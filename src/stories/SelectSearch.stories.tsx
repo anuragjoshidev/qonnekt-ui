@@ -19,6 +19,7 @@ const meta = {
 } satisfies Meta;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
 const OPTIONS = [
   { value: "apple", label: "Apple" },
@@ -26,7 +27,7 @@ const OPTIONS = [
   { value: "cherry", label: "Cherry" },
 ];
 
-export const Basic: StoryObj = {
+export const Default: Story = {
   render: function Demo() {
     const [value, setValue] = React.useState("");
     return (
