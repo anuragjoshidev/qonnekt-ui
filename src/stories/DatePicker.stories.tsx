@@ -6,6 +6,7 @@ const meta = {
   title: "Inputs/DatePicker",
   component: DatePicker,
   tags: ["autodocs"],
+  parameters: { a11y: { test: "error" } },
 } satisfies Meta<typeof DatePicker>;
 
 export default meta;

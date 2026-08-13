@@ -1,16 +1,46 @@
 # Qonnekt UI
 
-React component library for [Qonnekt](https://github.com/anuragjoshidev/qonnekt-ui) — Radix primitives, Tailwind v4 tokens, and production composites (SelectSearch, DataTable, form inputs).
+Batteries-included React UI kit for starting a product: tokens, a full primitive/overlay/form catalog, and production composites (searchable selects, data table, domain inputs, tree view).
 
-**Current version:** `0.1.0`
+Built on [Radix](https://www.radix-ui.com/) primitives and [shadcn/ui](https://ui.shadcn.com) patterns, retokened for Qonnekt (Untitled UI icons, Tailwind v4). The composites were built for real product screens.
+
+**Status:** `0.1.0` — source + Storybook. **Not published to npm.**
+
+**[Live Storybook](https://anuragjoshidev.github.io/qonnekt-ui/)**
+
+See **Examples → Leads workspace** in Storybook for a full screen that uses both layers (sidebar, filters, table, currency, chips).
+
+![Leads workspace](docs/screenshots/leads-workspace.png)
+
+<p align="center">
+  <img src="docs/screenshots/select-search.png" alt="SelectSearch" width="32%" />
+  <img src="docs/screenshots/data-table.png" alt="DataTable" width="32%" />
+  <img src="docs/screenshots/tree-view.png" alt="TreeView" width="32%" />
+</p>
+
+## What this is
+
+- A **starter UI kit** you can wire into a React 19 + Tailwind v4 app
+- Complete catalog: primitives, overlays, navigation, forms, charts, sidebar
+- Qonnekt composites on top: `SelectSearch`, `DataTable`, currency/phone/tags, `TreeView`
+- Defaults that match the product: **INR / `en-IN`**, display dates as `dd MMM yyyy`
+
+It is **not** a from-scratch design system, and it is **not** a Next.js app template. Clone this repo for the kit; scaffold routing and data fetching in your app.
 
 ## Install
 
+Not on npm. Use it from source:
+
 ```bash
-npm i qonnekt-ui
+git clone https://github.com/anuragjoshidev/qonnekt-ui.git
+cd qonnekt-ui
+npm install
+npm run build
 ```
 
 Peer dependencies: `react` and `react-dom` ^19.
+
+Link or pack `dist/` into an app. Do not `npm i qonnekt-ui` until a registry release exists.
 
 ## Setup
 
@@ -36,6 +66,27 @@ Adjust the `@source` path to match your app layout.
 import { Button } from "qonnekt-ui/button";
 import { DatePicker } from "qonnekt-ui/date-picker";
 import { Toaster, toast } from "qonnekt-ui/toaster";
+```
+
+## Original composites
+
+These are the product-layer APIs. Everything else in the catalog is the supporting kit (Radix + shadcn patterns, Qonnekt tokens/icons).
+
+| Component | Path | Role |
+|-----------|------|------|
+| SelectSearch | `qonnekt-ui/select-search` | Searchable single select, optional clear sentinel, async `onSearchChange` |
+| SelectSearchMulti | `qonnekt-ui/select-search-multi` | Multi-select, select-all, optional apply-on-confirm |
+| DataTable | `qonnekt-ui/data-table` | TanStack table: pin, filter, manual pagination, row selection |
+| InputCurrency | `qonnekt-ui/input-currency` | Numeric currency field (default INR) |
+| InputPhone | `qonnekt-ui/input-phone` | Dial-code + digits |
+| InputTags | `qonnekt-ui/input-tags` | Tag picker with create |
+| TreeView | `qonnekt-ui/tree-view` | Nested tree with badge/action slots |
+| Chip / Tag / Badge | `qonnekt-ui/chip`, `tag`, `badge` | Selectable / removable / static labels |
+
+```tsx
+import { SelectSearch, SelectSearchTrigger, SelectSearchValue } from "qonnekt-ui/select-search";
+import { DataTable } from "qonnekt-ui/data-table";
+import { InputCurrency } from "qonnekt-ui/input-currency";
 ```
 
 ## Labels
@@ -181,6 +232,18 @@ Import path is `qonnekt-ui/<path>`.
 | `lib/utils/url` | `removeProtocol`, `detectProtocol`, … |
 | `lib/filters/constants` | `FILTER_CLEAR`, `isFilterClear` |
 
+## Dependencies (why they’re bundled)
+
+This kit is meant to start an app with supporting libraries already in place. Radix, cmdk, CVA, and similar stay as `dependencies`. Heavier feature packages are also dependencies for the same reason:
+
+| Package | Used by |
+|---------|---------|
+| `@tanstack/react-table` | DataTable |
+| `recharts` | Chart |
+| `react-hook-form`, `zod`, `@hookform/resolvers` | Form |
+| `next-themes` | ThemeProvider |
+| `@untitledui/icons` | Icons across the kit |
+
 ## Storybook
 
 ```bash
@@ -188,14 +251,26 @@ npm install
 npm run storybook
 ```
 
+Hosted docs (GitHub Pages): https://anuragjoshidev.github.io/qonnekt-ui/
+
 ## Scripts
 
 | Command | Description |
 |---------|-------------|
 | `npm run build` | Build ESM + types to `dist/` |
-| `npm run typecheck` | TypeScript check |
+| `npm run typecheck` | TypeScript check (src, stories, tests) |
 | `npm test` | Vitest unit tests |
+| `npm run lint` | ESLint on `src` |
 | `npm run storybook` | Dev Storybook on :6006 |
+| `npm run build-storybook` | Static Storybook to `storybook-static/` |
+| `npm run ci` | typecheck + test + lint + build |
+
+## Attribution
+
+- [shadcn/ui](https://ui.shadcn.com) (MIT) — primitive/overlay/form patterns
+- [Radix UI](https://www.radix-ui.com/)
+- [Untitled UI icons](https://www.untitledui.com/icons)
+- [TanStack Table](https://tanstack.com/table), [Recharts](https://recharts.org/), [React Hook Form](https://react-hook-form.com/)
 
 ## License
 

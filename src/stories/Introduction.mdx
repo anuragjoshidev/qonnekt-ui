@@ -4,7 +4,13 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 # Qonnekt UI
 
-React components with Tailwind v4 tokens. Install with `npm i qonnekt-ui`, import `qonnekt-ui/theme.css`, and use path imports such as `qonnekt-ui/button`.
+Starter UI kit for React 19 + Tailwind v4. Primitives, overlays, and layout follow [Radix](https://www.radix-ui.com/) and [shadcn/ui](https://ui.shadcn.com) patterns, retokened for Qonnekt. Composites (searchable selects, data table, domain inputs, tree view) were built for production screens.
+
+**Not published to npm.** Run this Storybook, or build from source.
+
+## Start here
+
+Open **[Examples / Leads workspace](/?path=/story/examples-leads-workspace--default)** for a screen that uses sidebar, SelectSearch, DataTable, DateRangePicker, and currency formatting together.
 
 ## Labels
 
@@ -14,4 +20,10 @@ React components with Tailwind v4 tokens. Install with `npm i qonnekt-ui`, impor
 
 ## Theming
 
-Override CSS variables from `theme.css` in your app. Dark mode uses the `.dark` class on a parent (typically `<html>`).
+Override CSS variables from `theme.css` in your app. Dark mode uses the `.dark` class on a parent (typically `<html>`). Use the toolbar Theme control in this Storybook.
+
+Currency helpers default to **INR / en-IN**. Dates display as **dd MMM yyyy**.
+
+## Attribution
+
+shadcn/ui (MIT), Radix UI, Untitled UI icons, TanStack Table, Recharts, React Hook Form.

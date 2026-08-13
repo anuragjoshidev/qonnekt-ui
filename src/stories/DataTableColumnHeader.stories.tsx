@@ -22,10 +22,10 @@ const meta = {
   title: "Data/DataTableColumnHeader",
   component: DataTableColumnHeader,
   tags: ["autodocs"],
-} satisfies Meta<typeof DataTableColumnHeader>;
+} satisfies Meta;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: function Demo() {
@@ -36,7 +36,7 @@ export const Default: Story = {
       getSortedRowModel: getSortedRowModel(),
     });
     const header = table.getHeaderGroups()[0]?.headers[0];
-    if (!header) return null;
+    if (!header) return <span />;
     return (
       <div className="p-2">
         {typeof header.column.columnDef.header === "function"

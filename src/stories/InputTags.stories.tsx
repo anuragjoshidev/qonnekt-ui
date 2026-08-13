@@ -12,6 +12,7 @@ import {
 const meta = {
   title: "Inputs/InputTags",
   tags: ["autodocs"],
+  parameters: { a11y: { test: "error" } },
 } satisfies Meta;
 
 export default meta;
@@ -28,8 +29,8 @@ export const Default: Story = {
   render: function Demo() {
     const [value, setValue] = React.useState<string[]>(["design"]);
     return (
-      <InputTags value={value} onValueChange={setValue} options={OPTIONS} className="w-[320px]">
-        <InputTagsTrigger />
+      <InputTags value={value} onValueChange={setValue} options={OPTIONS}>
+        <InputTagsTrigger className="w-[320px]" />
         <InputTagsContent>
           <InputTagsCommand>
             <InputTagsList />

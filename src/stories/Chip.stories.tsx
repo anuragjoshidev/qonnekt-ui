@@ -6,6 +6,7 @@ const meta = {
   title: "Labels/Chip",
   component: Chip,
   tags: ["autodocs"],
+  parameters: { a11y: { test: "error" } },
 } satisfies Meta<typeof Chip>;
 
 export default meta;

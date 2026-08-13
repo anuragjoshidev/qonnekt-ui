@@ -37,13 +37,13 @@ function parseTimeOfDayString(value: string): string | null {
 /** App-wide display date format: DD MMM YYYY (e.g. 14 Feb 2025). Use for all user-facing dates. */
 const DISPLAY_DATE_FORMAT = "dd MMM yyyy";
 
-/** Date + time for follow-ups and timestamps (12-hour clock). */
+/** Date + time for timestamps (12-hour clock). */
 const DISPLAY_DATETIME_FORMAT = "dd MMM yyyy, h:mm a";
 
 const ISO_DATE_ONLY_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
 const HAS_TIMEZONE_RE = /(?:[zZ]|[+-]\d{2}:?\d{2})$/;
 
-/** Parse API/Postgres datetimes stored as UTC when no timezone suffix is present. */
+/** Parse API datetimes stored as UTC when no timezone suffix is present. */
 export function parseUtcDateTime(value: string): Date {
   const trimmed = value.trim();
   if (!trimmed) return new Date(NaN);
@@ -127,7 +127,7 @@ function pad2(n: number): string {
   return String(n).padStart(2, "0");
 }
 
-/** Normalize to `HH:mm:ss` for Postgres `time` columns. Accepts time-only or datetime. */
+/** Normalize to `HH:mm:ss` time values. Accepts time-only or datetime. */
 export function normalizeTimeOfDay(value: string | null | undefined): string | null {
   if (value == null) return null;
   const trimmed = value.trim();

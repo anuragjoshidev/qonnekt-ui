@@ -39,7 +39,7 @@ export interface DateRangePickerProps {
   /**
    * When true (default) and `value` is undefined, applies `preset` once on mount
    * via `onChange`. Set false for optional filters where "no range" should mean
-   * no filtering (e.g. client leads follow-up filter).
+   * no filtering (e.g. an optional date filter).
    */
   applyDefaultOnMount?: boolean;
   label?: string;
@@ -58,7 +58,7 @@ export function DateRangePicker({
   label,
   placeholder = "Select a Date Range",
   id = "date-range-picker",
-  compact = false,
+  compact: _compact = false,
   className,
   "aria-invalid": ariaInvalid,
 }: DateRangePickerProps) {

@@ -6,6 +6,7 @@ const meta = {
   title: "Labels/Tag",
   component: Tag,
   tags: ["autodocs"],
+  parameters: { a11y: { test: "error" } },
 } satisfies Meta<typeof Tag>;
 
 export default meta;

@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Avatar>
-      <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+      <AvatarImage src="https://github.com/github.png" alt="User" />
       <AvatarFallback>
         <AvatarInitials name="Ada Lovelace" />
       </AvatarFallback>

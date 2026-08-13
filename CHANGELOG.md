@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- README framed as a starter UI kit; install from source (not npm)
+- Button `loading` renders a spinner on native buttons
+- Unit tests for SelectSearch, DataTable, domain inputs, TreeView, Button
+- Storybook: Leads workspace example, extra composite stories, a11y `error` on originals
+- CI (typecheck, test, lint, build) and GitHub Pages Storybook deploy
+- Attribution for shadcn/ui in LICENSE
+
 ## 0.1.0
 
 Initial public release of **Qonnekt UI**.

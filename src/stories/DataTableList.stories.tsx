@@ -18,10 +18,10 @@ const meta = {
   title: "Data/DataTableList",
   component: DataTableList,
   tags: ["autodocs"],
-} satisfies Meta<typeof DataTableList>;
+} satisfies Meta;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: function Demo() {

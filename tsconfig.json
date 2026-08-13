@@ -12,13 +12,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
-  "include": ["src", "scripts", ".storybook", "vitest.config.ts", "tsup.config.ts"],
-  "exclude": [
-    "src/**/*.test.tsx",
-    "src/**/*.test.ts",
-    "src/stories",
-    "dist",
-    "node_modules"
-  ]
+  "include": ["src", "scripts", ".storybook", "vitest.config.ts", "tsup.config.ts", "vitest.setup.ts"],
+  "exclude": ["dist", "node_modules"]
 }
 

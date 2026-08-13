@@ -5,6 +5,7 @@ const meta = {
   title: "Inputs/InputPhone",
   component: InputPhone,
   tags: ["autodocs"],
+  parameters: { a11y: { test: "error" } },
   args: { className: "max-w-sm" },
 } satisfies Meta<typeof InputPhone>;
 

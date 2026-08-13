@@ -145,7 +145,7 @@ export function DataTable<TData, TValue>({
   columns,
   data,
   pageCount,
-  rowCount,
+  rowCount: _rowCount,
   initialState,
   state: controlledState,
   manualPagination = false,

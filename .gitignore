@@ -6,4 +6,5 @@ storybook-static
 coverage
 *.tsbuildinfo
 .vite
-storybook-static
+.env*
+.env

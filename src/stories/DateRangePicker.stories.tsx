@@ -5,6 +5,7 @@ const meta = {
   title: "Inputs/DateRangePicker",
   component: DateRangePicker,
   tags: ["autodocs"],
+  parameters: { a11y: { test: "error" } },
 } satisfies Meta<typeof DateRangePicker>;
 
 export default meta;

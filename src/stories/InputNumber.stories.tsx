@@ -6,10 +6,10 @@ const meta = {
   title: "Inputs/InputNumber",
   component: InputNumber,
   tags: ["autodocs"],
-} satisfies Meta<typeof InputNumber>;
+} satisfies Meta;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: function Demo() {

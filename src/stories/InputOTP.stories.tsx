@@ -5,10 +5,10 @@ const meta = {
   title: "Inputs/InputOTP",
   component: InputOTP,
   tags: ["autodocs"],
-} satisfies Meta<typeof InputOTP>;
+} satisfies Meta;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (

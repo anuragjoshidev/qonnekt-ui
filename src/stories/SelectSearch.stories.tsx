@@ -16,6 +16,7 @@ import {
 const meta = {
   title: "Inputs/SelectSearch",
   tags: ["autodocs"],
+  parameters: { a11y: { test: "error" } },
 } satisfies Meta;
 
 export default meta;
@@ -27,23 +28,104 @@ const OPTIONS = [
   { value: "cherry", label: "Cherry" },
 ];
 
+function FruitSelect({
+  clearable = false,
+  loading = false,
+  disabledCherry = false,
+}: {
+  clearable?: boolean;
+  loading?: boolean;
+  disabledCherry?: boolean;
+}) {
+  const [value, setValue] = React.useState("");
+  const selected = OPTIONS.find((option) => option.value === value);
+  return (
+    <SelectSearch value={value} onValueChange={setValue} clearable={clearable}>
+      <SelectSearchTrigger className="w-[240px]" loading={loading}>
+        <SelectSearchValue placeholder="Fruit">{selected?.label}</SelectSearchValue>
+      </SelectSearchTrigger>
+      <SelectSearchContent>
+        <SelectSearchCommand>
+          <SelectSearchInput placeholder="Search..." />
+          <SelectSearchList>
+            <SelectSearchEmpty />
+            <SelectSearchGroup>
+              {OPTIONS.map((option) => (
+                <SelectSearchItem
+                  key={option.value}
+                  value={option.value}
+                  label={option.label}
+                  disabled={disabledCherry && option.value === "cherry"}
+                >
+                  {option.label}
+                </SelectSearchItem>
+              ))}
+            </SelectSearchGroup>
+          </SelectSearchList>
+        </SelectSearchCommand>
+      </SelectSearchContent>
+    </SelectSearch>
+  );
+}
+
 export const Default: Story = {
+  render: () => <FruitSelect />,
+};
+
+export const Clearable: Story = {
+  render: () => <FruitSelect clearable />,
+};
+
+export const Loading: Story = {
+  render: () => <FruitSelect loading />,
+};
+
+export const DisabledOption: Story = {
+  render: () => <FruitSelect disabledCherry />,
+};
+
+export const AsyncSearch: Story = {
   render: function Demo() {
     const [value, setValue] = React.useState("");
+    const [query, setQuery] = React.useState("");
+    const [options, setOptions] = React.useState(OPTIONS);
+    const [loading, setLoading] = React.useState(false);
+    const selected = OPTIONS.find((option) => option.value === value);
+
+    React.useEffect(() => {
+      setLoading(true);
+      const id = window.setTimeout(() => {
+        const q = query.trim().toLowerCase();
+        setOptions(
+          OPTIONS.filter((option) => option.label.toLowerCase().includes(q)),
+        );
+        setLoading(false);
+      }, 250);
+      return () => window.clearTimeout(id);
+    }, [query]);
+
     return (
-      <SelectSearch value={value} onValueChange={setValue} clearable>
-        <SelectSearchTrigger className="w-[240px]">
-          <SelectSearchValue placeholder="Fruit" />
+      <SelectSearch
+        value={value}
+        onValueChange={setValue}
+        onSearchChange={setQuery}
+      >
+        <SelectSearchTrigger className="w-[240px]" loading={loading}>
+          <SelectSearchValue placeholder="Fruit">{selected?.label}</SelectSearchValue>
         </SelectSearchTrigger>
         <SelectSearchContent>
-          <SelectSearchCommand>
-            <SelectSearchInput placeholder="Search..." />
+          <SelectSearchCommand shouldFilter={false}>
+            <SelectSearchInput placeholder="Search remote..." />
             <SelectSearchList>
               <SelectSearchEmpty />
               <SelectSearchGroup>
-                {OPTIONS.map((o) => (
-                  <SelectSearchItem key={o.value} value={o.value} label={o.label}>
-                    {o.label}
+                {options.map((option) => (
+                  <SelectSearchItem
+                    key={option.value}
+                    value={option.value}
+                    label={option.label}
+                  >
+                    {option.label}
                   </SelectSearchItem>
                 ))}
               </SelectSearchGroup>

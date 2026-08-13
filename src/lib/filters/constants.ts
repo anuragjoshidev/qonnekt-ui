@@ -1,4 +1,4 @@
-/** Toolbar sentinel: no filter on this dimension (omit API param). */
+/** Sentinel: no filter on this dimension. */
 export const FILTER_CLEAR = "__clear__" as const;
 
 export type FilterClear = typeof FILTER_CLEAR;

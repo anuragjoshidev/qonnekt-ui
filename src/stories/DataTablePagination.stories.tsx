@@ -6,10 +6,10 @@ const meta = {
   title: "Data/DataTablePagination",
   component: DataTablePagination,
   tags: ["autodocs"],
-} satisfies Meta<typeof DataTablePagination>;
+} satisfies Meta;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: function Demo() {

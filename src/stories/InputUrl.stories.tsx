@@ -5,6 +5,7 @@ const meta = {
   title: "Inputs/InputUrl",
   component: InputUrl,
   tags: ["autodocs"],
+  parameters: { a11y: { test: "error" } },
   args: { placeholder: "example.com", className: "max-w-sm" },
 } satisfies Meta<typeof InputUrl>;
 

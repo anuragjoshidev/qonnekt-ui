@@ -5,10 +5,10 @@ const meta = {
   title: "Primitives/ToggleGroup",
   component: ToggleGroup,
   tags: ["autodocs"],
-} satisfies Meta<typeof ToggleGroup>;
+} satisfies Meta;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (

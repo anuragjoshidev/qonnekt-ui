@@ -5,10 +5,10 @@ const meta = {
   title: "Primitives/Accordion",
   component: Accordion,
   tags: ["autodocs"],
-} satisfies Meta<typeof Accordion>;
+} satisfies Meta;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (

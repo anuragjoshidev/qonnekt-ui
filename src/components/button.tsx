@@ -3,6 +3,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "../lib/utils";
+import { Spinner } from "./spinner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 
 const buttonVariants = cva(
@@ -41,6 +42,10 @@ export type ButtonProps = React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
     href?: string;
+    /**
+     * Shows a spinner and disables the control. Spinner is injected only on a
+     * native `<button>`; `asChild` / `href` get `aria-busy` and disabled styling only.
+     */
     loading?: boolean;
     tooltip?: React.ReactNode;
     /** Shown instead of `tooltip` when the button is disabled or loading. */
@@ -66,11 +71,13 @@ function Button({
   tooltipAlign,
   target,
   rel,
+  children,
   ...props
 }: ButtonProps) {
   const classes = cn(buttonVariants({ variant, size, className }));
   const isDisabled = Boolean(disabled || loading);
   const tooltipContent = isDisabled ? (disabledTooltip ?? tooltip) : tooltip;
+  const showSpinner = Boolean(loading) && !asChild && (href == null || href === "");
 
   let buttonElement: React.ReactNode;
 
@@ -84,8 +91,12 @@ function Button({
         href={href}
         target={target}
         rel={rel}
+        aria-busy={loading || undefined}
+        aria-disabled={isDisabled || undefined}
         {...(props as React.ComponentProps<"a">)}
-      />
+      >
+        {children}
+      </a>
     );
   } else {
     const Comp = asChild ? Slot : "button";
@@ -97,8 +108,12 @@ function Button({
         data-size={size}
         className={classes}
         disabled={isDisabled}
+        aria-busy={loading || undefined}
         {...props}
-      />
+      >
+        {showSpinner ? <Spinner aria-live="polite" /> : null}
+        {children}
+      </Comp>
     );
   }
 
